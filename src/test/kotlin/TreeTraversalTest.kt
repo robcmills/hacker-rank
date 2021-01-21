@@ -43,6 +43,12 @@ class TreeTraversalTest {
     }
 
     @Test
+    fun testTreeHeight0() {
+        val tree = BinaryTree()
+        assertEquals(0, tree.computeHeight())
+    }
+
+    @Test
     fun testTreeHeight1() {
         val tree = getTree()
         assertEquals(2, tree.computeHeight())
