@@ -3,36 +3,42 @@ package trees
 class BinaryNode(val value: String, val left: BinaryNode? = null, val right: BinaryNode? = null)
 
 class BinaryTree(val root: BinaryNode? = null) {
-    fun visitNodeInOrder(node: BinaryNode, visit: (node: BinaryNode) -> Unit) {
-        if (node.left != null) visitNodeInOrder(node.left, visit)
-        visit(node)
-        if (node.right != null) visitNodeInOrder(node.right, visit)
+    // https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem
+    fun computeHeight(node: BinaryNode? = root, height: Int = 0): Int {
+        if (node == null || node.left == null && node.right == null) return height
+        val left = if (node.left != null) computeHeight(node.left, height + 1) else 0
+        val right = if (node.right != null) computeHeight(node.right, height + 1) else 0
+        return if (left > right) left else right
     }
 
-    fun visitNodePostOrder(node: BinaryNode, visit: (node: BinaryNode) -> Unit) {
-        if (node.left != null) visitNodePostOrder(node.left, visit)
-        if (node.right != null) visitNodePostOrder(node.right, visit)
-        visit(node)
+    // https://www.hackerrank.com/challenges/tree-inorder-traversal/problem
+    fun traverseInOrder(onVisit: (node: BinaryNode) -> Unit, node: BinaryNode? = root): Unit {
+        if (node == null) return
+        if (node.left != null) traverseInOrder(onVisit, node.left)
+        onVisit(node)
+        if (node.right != null) traverseInOrder(onVisit, node.right)
     }
 
-    fun visitNodePreOrder(node: BinaryNode, visit: (node: BinaryNode) -> Unit) {
-        visit(node)
-        if (node.left != null) visitNodePreOrder(node.left, visit)
-        if (node.right != null) visitNodePreOrder(node.right, visit)
-    }
-
-    fun traverseInOrder(visit: (node: BinaryNode) -> Unit): Unit {
+    fun traversePostOrder(onVisit: (node: BinaryNode) -> Unit): Unit {
         if (root == null) return
-        visitNodeInOrder(root, visit)
+        visitNodePostOrder(root, onVisit)
     }
 
-    fun traversePostOrder(visit: (node: BinaryNode) -> Unit): Unit {
+    fun traversePreOrder(onVisit: (node: BinaryNode) -> Unit): Unit {
         if (root == null) return
-        visitNodePostOrder(root, visit)
+        visitNodePreOrder(root, onVisit)
     }
 
-    fun traversePreOrder(visit: (node: BinaryNode) -> Unit): Unit {
-        if (root == null) return
-        visitNodePreOrder(root, visit)
+    fun visitNodePostOrder(node: BinaryNode, onVisit: (node: BinaryNode) -> Unit) {
+        if (node.left != null) visitNodePostOrder(node.left, onVisit)
+        if (node.right != null) visitNodePostOrder(node.right, onVisit)
+        onVisit(node)
     }
+
+    fun visitNodePreOrder(node: BinaryNode, onVisit: (node: BinaryNode) -> Unit) {
+        onVisit(node)
+        if (node.left != null) visitNodePreOrder(node.left, onVisit)
+        if (node.right != null) visitNodePreOrder(node.right, onVisit)
+    }
+
 }

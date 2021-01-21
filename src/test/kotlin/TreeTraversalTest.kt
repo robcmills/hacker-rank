@@ -42,4 +42,24 @@ class TreeTraversalTest {
         assertEquals("a b d e c f g", result.joinToString(" "))
     }
 
+    @Test
+    fun testTreeHeight1() {
+        val tree = getTree()
+        assertEquals(2, tree.computeHeight())
+    }
+
+    @Test
+    fun testTreeHeight2() {
+        val tree = BinaryTree(BinaryNode(
+            "3",
+            left = BinaryNode("2", left = BinaryNode("1")),
+            right = BinaryNode(
+                "5",
+                left = BinaryNode("4"),
+                right = BinaryNode("6", right = BinaryNode("7"))
+            )
+        ))
+        assertEquals(3, tree.computeHeight())
+    }
+
 }
