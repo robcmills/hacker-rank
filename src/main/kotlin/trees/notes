@@ -1,0 +1,11 @@
+
+          a
+        /   \
+      b       c
+     / \     / \
+    d   e   f   g
+
+inOrder: d b e a f c g
+               ^
+           ^
+         ^
