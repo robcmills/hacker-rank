@@ -1,6 +1,8 @@
 import org.junit.Test
 import trees.BinaryNode
 import trees.BinaryTree
+import trees.indexOf
+import java.util.*
 import kotlin.test.assertEquals
 
 class TreeTraversalTest {
@@ -16,6 +18,64 @@ class TreeTraversalTest {
             left = BinaryNode("b", left = BinaryNode("d"), right = BinaryNode("e")),
             right = BinaryNode("c", left = BinaryNode("f"), right = BinaryNode("g"))
         ))
+    }
+
+    @Test
+    fun testLinkedListIndexOfExtension() {
+        val list = LinkedList<Int>()
+        list.addAll(listOf(1,2,3,4,5))
+        val index = list.indexOf { i -> i == 3 }
+        assertEquals(2, index)
+    }
+
+    @Test
+    fun testTraverseTopView1() {
+        val tree = getTree()
+        val result = mutableListOf<String>()
+        tree.traverseTopView({ node: BinaryNode -> result.add(node.value) })
+        assertEquals("d b a c g", result.joinToString(" "))
+    }
+
+    @Test
+    fun testTraverseTopView2() {
+        val tree = BinaryTree(BinaryNode(
+            "1",
+            right = BinaryNode(
+                "2",
+                right = BinaryNode(
+                    "5",
+                    left = BinaryNode(
+                        "3",
+                        right = BinaryNode("4")
+                    ),
+                    right = BinaryNode("6")
+                )
+            )
+        ))
+        val result = mutableListOf<String>()
+        tree.traverseTopView({ node: BinaryNode -> result.add(node.value) })
+        assertEquals("1 2 5 6", result.joinToString(" "))
+    }
+
+    @Test
+    fun testTraverseTopView3() {
+        val tree = BinaryTree(BinaryNode(
+            "1",
+            left = BinaryNode(
+                "2",
+                right = BinaryNode(
+                    "4",
+                    right = BinaryNode(
+                        "5",
+                        right = BinaryNode("6")
+                    )
+                )
+            ),
+            right = BinaryNode("3")
+        ))
+        val result = mutableListOf<String>()
+        tree.traverseTopView({ node: BinaryNode -> result.add(node.value) })
+        assertEquals("2 1 3 6", result.joinToString(" "))
     }
 
     @Test
