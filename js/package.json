@@ -1,0 +1,22 @@
+{
+  "name": "hacker-rank-node-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/robcmills/hacker-rank.git"
+  },
+  "author": "robcmills",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robcmills/hacker-rank/issues"
+  },
+  "homepage": "https://github.com/robcmills/hacker-rank#readme",
+  "devDependencies": {
+    "eslint": "^8.4.1"
+  }
+}
