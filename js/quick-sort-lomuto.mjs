@@ -1,10 +1,5 @@
 import { expect } from 'chai';
-
-export function swap(array, i, j) {
-  const temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-}
+import { swap } from './swap.mjs';
 
 export function lomutoPartition(array, start, end) {
   const pivot = array[end];
@@ -42,7 +37,7 @@ function test(array, expected) {
 test([], []);
 test([1], [1]);
 test([1, 2], [1, 2]);
+test([2, 1], [1, 2]);
 test([1, 2, 3], [1, 2, 3]);
 test([1, 3, 2], [1, 2, 3]);
-test([1, 3, 2], [1, 2, 3]);
-test([1, 3, 2], [1, 2, 3]);
+test([3, 2, 1], [1, 2, 3]);
