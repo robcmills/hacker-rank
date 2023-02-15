@@ -1,0 +1,34 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "TypeScript Hacker Rank challenges",
+  "main": "index.js",
+  "scripts": {
+    "run": "~/deno run",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/robcmills/hacker-rank.git"
+  },
+  "author": "robcmills",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robcmills/hacker-rank/issues"
+  },
+  "homepage": "https://github.com/robcmills/hacker-rank#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0"
+  }
+}
