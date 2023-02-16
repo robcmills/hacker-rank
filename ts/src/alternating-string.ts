@@ -1,4 +1,4 @@
-import { expect } from './deps';
+import { expect } from 'chai';
 
 /*
 You are given a string containing characters A and B only.
@@ -9,7 +9,26 @@ Your task is to find the minimum number of required deletions.
 */
 
 function findMinimumDeletions(s: string): number {
-  return 0;
+  let alternate;
+  let deletions = 0;
+  for (let char of s) {
+    if (alternate === undefined) {
+      alternate = char;
+      continue;
+    }
+    if (char === alternate) {
+      deletions++;
+    } else {
+      alternate = char;
+    }
+  }
+  return deletions;
 }
 
-expect(findMinimumDeletions('AAA')).toEqual(2);
+expect(findMinimumDeletions('AAA')).to.equal(2);
+expect(findMinimumDeletions('A')).to.equal(0);
+expect(findMinimumDeletions('AB')).to.equal(0);
+expect(findMinimumDeletions('ABABAB')).to.equal(0);
+expect(findMinimumDeletions('BABABA')).to.equal(0);
+expect(findMinimumDeletions('AABBAAA')).to.equal(4);
+expect(findMinimumDeletions('AAAB')).to.equal(2);
