@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/graph-undirected-path.ts",
+    "go": "ts-node src/ice-cream-flavors.ts",
     "test": "test"
   },
   "repository": {
