@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/binary-tree-swap-nodes.ts",
+    "go": "ts-node src/maximum-sum-subarray.ts",
     "test": "test"
   },
   "repository": {
