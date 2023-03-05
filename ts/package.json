@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/array-sort-segregate.ts",
+    "go": "ts-node src/dynamic-max-path-sum.ts",
     "test": "test"
   },
   "repository": {
