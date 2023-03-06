@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/dynamic-max-path-sum.ts",
+    "go": "ts-node src/dynamic-summing-squares.ts",
     "test": "test"
   },
   "repository": {
