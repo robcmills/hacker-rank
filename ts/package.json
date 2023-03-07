@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/dynamic-max-palin-subsequence.ts",
+    "go": "ts-node src/string-compress.ts",
     "test": "test"
   },
   "repository": {
