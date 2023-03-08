@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/array-five-sort.ts",
+    "go": "ts-node src/linked-list-merge.ts",
     "test": "test"
   },
   "repository": {
