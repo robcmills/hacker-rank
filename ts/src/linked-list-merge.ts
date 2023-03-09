@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { listToArray } from './linked-list-to-array';
 
 class ListNode {
   val: number;
@@ -128,12 +129,4 @@ function mergeLists(a: ListNode, b: ListNode): ListNode | null {
   expect(listToArray(mergeLists(h, p))).to.deep.equal([15, 30, 67]);
 }
 
-function listToArray(list: ListNode | null): number[] {
-  const array = [];
-  let current: ListNode | null = list;
-  while (current !== null) {
-    array.push(current.val);
-    current = current.next;
-  }
-  return array;
-}
+
