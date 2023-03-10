@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/binary-tree-levels.ts",
+    "go": "ts-node src/graph-closest-carrot.ts",
     "test": "test"
   },
   "repository": {
