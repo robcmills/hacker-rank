@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/graph-shortest-bridge.ts",
+    "go": "ts-node src/graph-has-cycle.ts",
     "test": "test"
   },
   "repository": {
