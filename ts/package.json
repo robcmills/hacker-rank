@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/graph-has-cycle.ts",
+    "go": "ts-node src/graph-knight-attack.ts",
     "test": "test"
   },
   "repository": {
