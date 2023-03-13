@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/graph-knight-attack.ts",
+    "go": "ts-node src/dynamic-quickest-concat.ts",
     "test": "test"
   },
   "repository": {
