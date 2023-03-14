@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/dynamic-quickest-concat.ts",
+    "go": "ts-node src/dynamic-knightly-number.ts",
     "test": "test"
   },
   "repository": {
