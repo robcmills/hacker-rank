@@ -35,28 +35,25 @@ Space: O(2^n)
 function subsets(elements: string[]): string[][] {
   if (elements.length === 0) return [[]];
 
-  const first = elements[0];
-  const restSubsets = subsets(elements.slice(1));
-  const combinedSubsets = [];
-  for (let set of restSubsets) {
-    combinedSubsets.push([first, ...set]);
-  }
+  const last = elements.pop() as string;
+  const restSubsets = subsets(elements);
+  const combinedSubsets = restSubsets.map((set) => [...set, last]);
 
   return [...restSubsets, ...combinedSubsets];
 }
 
 // test_00:
-expect(subsets(['a', 'b'])).to.deep.equal([[], ['b'], ['a'], ['a', 'b']]);
+expect(subsets(['a', 'b'])).to.deep.equal([[], ['a'], ['b'], ['a', 'b']]);
 
 // test_01:
 expect(subsets(['a', 'b', 'c'])).to.deep.equal([
   [],
-  ['c'],
-  ['b'],
-  ['b', 'c'],
   ['a'],
-  ['a', 'c'],
+  ['b'],
   ['a', 'b'],
+  ['c'],
+  ['a', 'c'],
+  ['b', 'c'],
   ['a', 'b', 'c'],
 ]);
 
@@ -69,19 +66,19 @@ expect(subsets([])).to.deep.equal([[]]);
 // test_04:
 expect(subsets(['q', 'r', 's', 't'])).to.deep.equal([
   [],
-  ['t'],
-  ['s'],
-  ['s', 't'],
-  ['r'],
-  ['r', 't'],
-  ['r', 's'],
-  ['r', 's', 't'],
   ['q'],
-  ['q', 't'],
-  ['q', 's'],
-  ['q', 's', 't'],
+  ['r'],
   ['q', 'r'],
-  ['q', 'r', 't'],
+  ['s'],
+  ['q', 's'],
+  ['r', 's'],
   ['q', 'r', 's'],
+  ['t'],
+  ['q', 't'],
+  ['r', 't'],
+  ['q', 'r', 't'],
+  ['s', 't'],
+  ['q', 's', 't'],
+  ['r', 's', 't'],
   ['q', 'r', 's', 't'],
 ]);
