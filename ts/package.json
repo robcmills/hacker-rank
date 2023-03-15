@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/exhaustive-parentheticals.ts",
+    "go": "ts-node src/exhaustive-substitute-synonyms.ts",
     "test": "test"
   },
   "repository": {
