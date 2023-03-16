@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/exhaustive-substitute-synonyms.ts",
+    "go": "ts-node src/linked-list-cycle.ts",
     "test": "test"
   },
   "repository": {
