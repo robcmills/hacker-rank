@@ -9,18 +9,18 @@ Note that the left-most TreeNode on a level may not necessarily be a left child.
 function leftyNodes(root: TreeNode<string> | null): string[] {
   if (root === null) return [];
 
-  const memo: Record<number, string> = {};
+  const result: string[] = [];
   const queue = [[root, 0]];
   while (queue.length > 0) {
     const [currentNode, level] = queue.shift() as [TreeNode, number];
-    if (!(level in memo)) {
-      memo[level] = currentNode.val;
+    if (result[level] === undefined) {
+      result[level] = currentNode.val;
     }
     if (currentNode.left !== null) queue.push([currentNode.left, level + 1]);
     if (currentNode.right !== null) queue.push([currentNode.right, level + 1]);
   }
 
-  return Object.values(memo);
+  return result;
 }
 
 // test_00
