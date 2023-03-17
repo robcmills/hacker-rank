@@ -46,9 +46,9 @@ the nodes of each island, thus failing the problem requirements.
 
 Detecting this is easy though. All we have to do is start a 
 depth first traversal from any node, and we should visit every
-node if there is a unique route. If after traversal, and 
+node if there is only one island. If after traversal, and 
 recording visited nodes, there are any "left over" nodes not
-in the visited set, then return false.
+in the visited set (more than one island), then return false.
 
 Complexity:
 
