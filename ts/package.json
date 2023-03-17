@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/graph-colors.ts",
+    "go": "ts-node src/graph-rare-routing.ts",
     "test": "test"
   },
   "repository": {
