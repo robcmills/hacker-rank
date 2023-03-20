@@ -35,46 +35,46 @@ function isLexicalOrder(
 }
 
 // test_00:
-// {
-//   const dictionary = ['zoo', 'tick', 'tack', 'door'];
-//   const alphabet = 'ghzstijbacdopnfklmeqrxyuvw';
-//   expect(detectDictionary(dictionary, alphabet)).to.equal(true);
-// }
-//
-// // test_01:
-// {
-//   const dictionary = ['zoo', 'tack', 'tick', 'door'];
-//   const alphabet = 'ghzstijbacdopnfklmeqrxyuvw';
-//   expect(detectDictionary(dictionary, alphabet)).to.equal(false);
-// }
-//
-// // test_02:
-// {
-//   const dictionary = ['zoos', 'zoo', 'tick', 'tack', 'door'];
-//   const alphabet = 'ghzstijbacdopnfklmeqrxyuvw';
-//   expect(detectDictionary(dictionary, alphabet)).to.equal(false);
-// }
-//
-// // test_03:
-// {
-//   const dictionary = ['miles', 'milestone', 'proper', 'process', 'goal'];
-//   const alphabet = 'mnoijpqrshkltabcdefguvwzxy';
-//   expect(detectDictionary(dictionary, alphabet)).to.equal(true);
-// }
-//
-// // test_04:
-// {
-//   const dictionary = [
-//     'miles',
-//     'milestone',
-//     'pint',
-//     'proper',
-//     'process',
-//     'goal',
-//   ];
-//   const alphabet = 'mnoijpqrshkltabcdefguvwzxy';
-//   expect(detectDictionary(dictionary, alphabet)).to.equal(true);
-// }
+{
+  const dictionary = ['zoo', 'tick', 'tack', 'door'];
+  const alphabet = 'ghzstijbacdopnfklmeqrxyuvw';
+  expect(detectDictionary(dictionary, alphabet)).to.equal(true);
+}
+
+// test_01:
+{
+  const dictionary = ['zoo', 'tack', 'tick', 'door'];
+  const alphabet = 'ghzstijbacdopnfklmeqrxyuvw';
+  expect(detectDictionary(dictionary, alphabet)).to.equal(false);
+}
+
+// test_02:
+{
+  const dictionary = ['zoos', 'zoo', 'tick', 'tack', 'door'];
+  const alphabet = 'ghzstijbacdopnfklmeqrxyuvw';
+  expect(detectDictionary(dictionary, alphabet)).to.equal(false);
+}
+
+// test_03:
+{
+  const dictionary = ['miles', 'milestone', 'proper', 'process', 'goal'];
+  const alphabet = 'mnoijpqrshkltabcdefguvwzxy';
+  expect(detectDictionary(dictionary, alphabet)).to.equal(true);
+}
+
+// test_04:
+{
+  const dictionary = [
+    'miles',
+    'milestone',
+    'pint',
+    'proper',
+    'process',
+    'goal',
+  ];
+  const alphabet = 'mnoijpqrshkltabcdefguvwzxy';
+  expect(detectDictionary(dictionary, alphabet)).to.equal(true);
+}
 
 // test_05:
 {
