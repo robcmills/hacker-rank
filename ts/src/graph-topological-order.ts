@@ -8,55 +8,63 @@ The topological ordering of a graph is a sequence where "parent nodes" appear be
 
 ### Approach
 
-Key insight: This is essentially a longest path problem.
+Key insight: We can work out the topological order using the 
+number of parents for each node. 
 
-We can model a depth first traversal as a tree, that branches
-whenever there are multiple adjacent nodes. We collect node
-values as we traverse, and then return the longest path as we 
-recurse back up the tree.
+Build a hash map of node: numberParents
+Push any nodes that have zero parents onto a stack.
+While the stack is not empty,
+add the node to our final order result
+decrement the node's children's parent count
+and if parent count reaches zero, push that node onto the stack.
 
 Complexity:
 
 n = number of nodes
+e = number of edges
+
+Time: O(e + n)
+Space: O(n)
 
 */
 function topologicalOrder(graph: Graph): string[] {
-  // Find the root node (no parents)
-  const children = new Set<string>();
+  const numberParents: Record<string, number> = {};
   for (let node in graph) {
-    for (let child of graph[node]) {
-      children.add(child);
+    numberParents[node] = 0;
+  }
+  for (let parent in graph) {
+    for (let child of graph[parent]) {
+      numberParents[child] += 1;
     }
   }
-  const root = Object.keys(graph).find((node) => !children.has(node))!;
-  return findLongestPath(graph, root);
-}
 
-function findLongestPath(graph: Graph, root: string): string[] {
-  const children = graph[root];
-  if (children.length === 0) return [root];
+  const stack = Object.keys(graph).filter((node) => numberParents[node] === 0);
+  const order: string[] = [];
 
-  let longestPath: string[] = [];
-  for (let child of children) {
-    const longestChildPath = findLongestPath(graph, child);
-    if (longestChildPath.length > longestPath.length) {
-      longestPath = longestChildPath;
+  while (stack.length > 0) {
+    const parent = stack.pop() as string;
+    order.push(parent);
+    for (let child of graph[parent]) {
+      numberParents[child] -= 1;
+      if (numberParents[child] === 0) stack.push(child);
     }
   }
-  return [root, ...longestPath];
+
+  return order;
 }
 
 // test_00:
 expect(
   topologicalOrder({
-    a: ['f'], //      c ───┐
-    b: ['d'], //      ↓    ↓
-    c: ['a', 'f'], // a →  f
-    d: ['e'], //      ┌────┴────┐
-    e: [], //         ↓         ↓
-    f: ['b', 'e'], // b →  d →  e
+    a: ['f'], //           c →  g
+    b: ['d'], //           ↓    ↓
+    c: ['a', 'g'], //      a →  f
+    d: ['e'], //           ┌────┴────┐
+    e: [], //              ↓         ↓
+    f: ['b', 'e'], //      b →  d →  e
+    g: ['f'],
   })
-).to.deep.equal(['c', 'a', 'f', 'b', 'd', 'e']);
+).to.deep.equal(['c', 'g', 'a', 'f', 'b', 'd', 'e']);
 
 // test_01:
 expect(
@@ -91,3 +99,30 @@ expect(
     z: ['w'], //           └─── v ───┘
   })
 ).to.deep.equal(['y', 'x', 'v', 'z', 'w']);
+
+// test_04:
+expect(
+  topologicalOrder({
+    a: ['c'], //       a →  c →  e
+    b: ['d'], //            ↓
+    c: ['d', 'e'], //  b →  d →  f
+    d: ['f'],
+    e: [],
+    f: [],
+  })
+).to.deep.equal(['b', 'a', 'c', 'e', 'd', 'f']);
+
+// test_05:
+expect(
+  topologicalOrder({
+    a: ['b', 'c'], //          a
+    b: ['d', 'e', 'f'], // ┌───┴───┐
+    c: ['g', 'h', 'i'], // ↓       ↓
+    d: [], //              b       c
+    e: [], //           ┌──┼──┐ ┌──┼──┐
+    f: [], //           ↓  ↓  ↓ ↓  ↓  ↓
+    g: [], //           d  e  f g  h  i
+    h: [],
+    i: [],
+  })
+).to.deep.equal(['a', 'c', 'i', 'h', 'g', 'b', 'f', 'e', 'd']);
