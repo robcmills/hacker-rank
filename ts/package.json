@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/binary-tree-build-post-order.ts",
+    "go": "ts-node src/sort-detect-dictionary.ts",
     "test": "test"
   },
   "repository": {
