@@ -11,6 +11,11 @@ Write a function, uncompress, that takes in a string as an argument. The input s
 
 for example, '2c' or '3a'.
 The function should return an uncompressed version of the string where each 'char' of a group is repeated 'number' times consecutively. You may assume that the input string is well-formed according to the previously mentioned pattern.
+
+### Approach
+
+Two pointers
+
 */
 function uncompress(s: string): string {
   // Strings in javascript are immutable, meaning if we used a string
