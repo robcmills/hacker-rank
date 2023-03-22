@@ -7,17 +7,24 @@ You can assume that all letters are lowercase and alphabetic.
 
 ### Approach
 
-Iterate the grid until we find characters matching the first
-character of the target string. Start a breadth first traversal
-from that point to see if we can string together a match for 
+Iterate the grid and do a breadth first traversal from each
+character to see if we can string together a match for 
 the whole string. Memoize visited characters to prevent reusing
-positions. 
+positions during each traversal, but also globally memoize 
+characters with target string index to optimize.
 
+Complexity:
+
+c = number of columns
+r = number of rows
+Time: O(3^rc)
+Space: O(rc)
 */
 function stringSearch(grid: string[][], s: string): boolean {
+  const memo = new Set<string>();
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid[0].length; x++) {
-      if (explore(grid, x, y, s)) {
+      if (explore(grid, x, y, s, 0, memo)) {
         return true;
       }
     }
@@ -37,10 +44,14 @@ function explore(
   x: number,
   y: number,
   s: string,
+  i: number,
+  memo: Set<string>,
   visited = new Set<string>()
 ): boolean {
-  if (s.length === 0) return true;
-  if (grid[y][x] !== s[0]) return false;
+  const key = `${x},${y},${i}`;
+  if (memo.has(key)) return false;
+  if (grid[y][x] !== s[i]) return false;
+  if (i === s.length - 1) return true;
 
   visited.add(`${x},${y}`);
 
@@ -50,12 +61,13 @@ function explore(
     if (
       !visited.has(`${targetX},${targetY}`) &&
       inBounds(grid, targetX, targetY) &&
-      explore(grid, targetX, targetY, s.slice(1))
+      explore(grid, targetX, targetY, s, i + 1, memo)
     ) {
       return true;
     }
   }
 
+  memo.add(key);
   return false;
 }
 
