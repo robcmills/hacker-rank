@@ -23,7 +23,7 @@
   9. longest-streak
   10. remove-node
   11. insert-node
-  12. create-linked-list
+  12. create-linked-list (dummy head)
   13. add-lists
 
 3. Binary Tree
@@ -35,7 +35,7 @@
   6. max-root-to-leaf-path-sum
   7. tree-path-finder
   8. tree-value-count
-  9. how-high
+  9. how-high (height)
   10. bottom-right-value
   11. all-tree-paths
   12. tree-levels
@@ -47,17 +47,16 @@
   2. undirected-path
   3. connected-components-count
   4. largest-component
-  5. slow-and-steady
-  6. shortest-path
-  7. island-count
-  8. minimum-island
-  9. closest-carrot
-  10. longest-path
-  11. semesters-required
-  12. best-bridge
-  13. has-cycle
-  14. prereqs-possible
-  15. knight-attack
+  5. shortest-path
+  6. island-count
+  7. minimum-island
+  8. closest-carrot
+  9. longest-path
+  10. semesters-required
+  11. best-bridge
+  12. has-cycle
+  13. prereqs-possible
+  14. knight-attack
 
 5. Dynamic Programming
   1. fibonacci
