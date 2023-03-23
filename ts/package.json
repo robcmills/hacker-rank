@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/dynamic-sum-possible.ts",
+    "go": "ts-node src/stack-paired-parentheses.ts",
     "test": "test"
   },
   "repository": {
