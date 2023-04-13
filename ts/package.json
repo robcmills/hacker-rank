@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node src/stack-paired-parentheses.ts",
+    "go": "ts-node leet-code-problems/binary-min-heap.test.ts",
     "test": "test"
   },
   "repository": {
