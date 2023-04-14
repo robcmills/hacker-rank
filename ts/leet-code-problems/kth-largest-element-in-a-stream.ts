@@ -1,3 +1,5 @@
+import { MinHeap } from './min-heap';
+
 /*
 Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
@@ -32,9 +34,30 @@ Constraints:
 -104 <= val <= 104
 At most 104 calls will be made to add.
 It is guaranteed that there will be at least k elements in the array when you search for the kth element.
-*/
-class KthLargest {
-  constructor(k: number, nums: number[]) {}
 
-  add(val: number): number {}
+### Approach
+
+- Use a min heap to store the k largest elements
+- This way we can easily access kth largest element as the root of the heap in O(1) time
+- When inserting numbers into the heap, if the size of the heap is larger than k, shift off excess.
+
+*/
+export class KthLargest {
+  private heap: MinHeap;
+  private k: number;
+
+  constructor(k: number, nums: number[]) {
+    this.k = k;
+    this.heap = new MinHeap();
+    for (const n of nums) {
+      this.heap.insert(n);
+      if (this.heap.size() > k) this.heap.shift();
+    }
+  }
+
+  add(val: number): number {
+    this.heap.insert(val);
+    if (this.heap.size() > this.k) this.heap.shift();
+    return this.heap.first();
+  }
 }

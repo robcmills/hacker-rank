@@ -30,11 +30,19 @@ A Binary Min Heap has the following properties:
    │1│3│2│5│4│7│
    └─┴─┴─┴─┴─┴─┘
 */
-export class MinBinaryHeap {
+export class MinHeap {
   public heap: number[];
 
   constructor() {
     this.heap = [];
+  }
+
+  size() {
+    return this.heap.length;
+  }
+
+  first() {
+    return this.heap[0];
   }
 
   /*
@@ -61,7 +69,7 @@ export class MinBinaryHeap {
   }
 
   /*
-   * Remove and return the min value.
+   * Remove and return the min value (the root).
    * Then rebalance heap:
    * Pop off last value and replace first value with it.
    * Then "sink down" that first value until heap properties are satisfied.
@@ -85,10 +93,16 @@ export class MinBinaryHeap {
       (parentValue > leftChildValue || parentValue > rightChildValue)
     ) {
       if (parentValue > leftChildValue && parentValue > rightChildValue) {
-        // If parent is greater than both children, swap with right child
-        this.heap[rightChildIndex] = parentValue;
-        this.heap[parentIndex] = rightChildValue;
-        parentIndex = rightChildIndex;
+        // If parent is greater than both children, swap with the smaller child
+        if (leftChildValue < rightChildValue) {
+          this.heap[leftChildIndex] = parentValue;
+          this.heap[parentIndex] = leftChildValue;
+          parentIndex = leftChildIndex;
+        } else {
+          this.heap[rightChildIndex] = parentValue;
+          this.heap[parentIndex] = rightChildValue;
+          parentIndex = rightChildIndex;
+        }
       } else if (parentValue > leftChildValue) {
         // If parent is greater than left child, swap with left child
         this.heap[leftChildIndex] = parentValue;
@@ -100,6 +114,7 @@ export class MinBinaryHeap {
         this.heap[parentIndex] = rightChildValue;
         parentIndex = rightChildIndex;
       } else {
+        // Else parent is less than both children, and heap properties are satisfied.
         break;
       }
       parentValue = this.heap[parentIndex];
