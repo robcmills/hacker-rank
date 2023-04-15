@@ -66,25 +66,21 @@ function lastStoneWeight(stones: number[]): number {
   return heap.size() === 1 ? (heap.shift() as number) : 0;
 }
 
-// // Test 1
-// {
-//   const input = [2, 7, 4, 1, 8, 1];
-//   const output = 1;
-//   expect(lastStoneWeight(input)).to.equal(output);
-// }
-//
-// // Test 2
-// {
-//   const input = [1];
-//   const output = 1;
-//   expect(lastStoneWeight(input)).to.equal(output);
-// }
+// Test 1
+{
+  const input = [2, 7, 4, 1, 8, 1];
+  const output = 1;
+  expect(lastStoneWeight(input)).to.equal(output);
+}
+
+// Test 2
+{
+  const input = [1];
+  const output = 1;
+  expect(lastStoneWeight(input)).to.equal(output);
+}
 
 // Test 3
-/*
-  7
- 3 2
-*/
 {
   const input = [3, 7, 2];
   const output = 2;

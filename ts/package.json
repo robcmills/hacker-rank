@@ -4,8 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "go": "ts-node leet-code-problems/last-stone-weight.ts",
-    "test": "test"
+    "test": "ts-node leet-code-problems/design-twitter.ts"
   },
   "repository": {
     "type": "git",
