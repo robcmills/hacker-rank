@@ -45,6 +45,10 @@ export class MinHeap {
     return this.heap[0];
   }
 
+  min() {
+    return this.heap[0];
+  }
+
   /*
    * Push n onto end of heap.
    * Then "bubble up" until heap properties are satisfied.

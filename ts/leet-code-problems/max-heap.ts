@@ -16,6 +16,10 @@ export class MaxHeap {
     return [...this.heap];
   }
 
+  max() {
+    return this.heap[0];
+  }
+
   insert(n: number) {
     this.heap.push(n);
     if (this.heap.length === 1) return;
