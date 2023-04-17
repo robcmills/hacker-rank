@@ -8,10 +8,10 @@
 
 A Binary Min Heap has the following properties:
 
-● Every node will have at most 2 children
+● Every node will have at most 2 children (binary tree)
 ● Each node's value will always be less than its children
   and there is no guaranteed order to the children.
-● The root node's value will always be less than all the nodes.
+● The root node's value will always be less than all the nodes (min)
 
 ● Unlike Linked Lists and Binary Trees, no special data structure 
   is needed to store a Heap. They can be implemented using an Array.
