@@ -14,12 +14,19 @@ represents one of the items, and each branch represents
 where to insert that item, like so:
 
                         [ ]
-a                        │
-                        [a]
-b            ┌───────────┴────────────┐
-           [b,a]                    [a,b]
-c    ┌───────┼───────┐        ┌───────┼───────┐
-  [c,b,a] [b,c,a] [b,a,c]  [c,a,b] [a,c,b] [a,b,c]
+                         │
+a                       [a]
+             ┌───────────┴────────────┐
+b          [b,a]                    [a,b] (insert b into indices 0,1)
+     ┌───────┼───────┐        ┌───────┼───────┐
+c [c,b,a] [b,c,a] [b,a,c]  [c,a,b] [a,c,b] [a,b,c] (insert c into indices 0,1,2)
+
+
+We can implement this in a backwards fashion with recursion by
+popping the last item and then recursing on the remaining items.
+Once we reach the base case (items.length === 0) then we can start
+building the permutations by inserting each last item into every
+index of each permutation, by slicing before/after.
 
 Complexity:
 
@@ -35,6 +42,7 @@ function permutations(items: ValueType[]): ValueType[][] {
 
   const last = items.pop() as ValueType;
   const restPermutations = permutations(items);
+
   const combinedPermutations = [];
   for (let permutation of restPermutations) {
     for (let i = 0; i <= permutation.length; i++) {

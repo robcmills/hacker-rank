@@ -36,10 +36,10 @@ function subsets(elements: string[]): string[][] {
   if (elements.length === 0) return [[]];
 
   const last = elements.pop() as string;
-  const restSubsets = subsets(elements);
-  const combinedSubsets = restSubsets.map((set) => [...set, last]);
+  const excludeSubsets = subsets(elements);
+  const includeSubsets = excludeSubsets.map((set) => [...set, last]);
 
-  return [...restSubsets, ...combinedSubsets];
+  return [...excludeSubsets, ...includeSubsets];
 }
 
 // test_00:
