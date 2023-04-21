@@ -120,7 +120,8 @@ Once you get to the end, the DP value represents the max money you can steal fro
 In terms of implementation, you only need two variables to hold the previous two houses (and one temporary to swap).
 
 */
-function rob(nums: number[]): number {
+export function rob(nums: number[]): number {
+  if (nums.length === 1) return nums[0];
   let house1 = 0;
   let house2 = 0;
 

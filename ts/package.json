@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node leet-code-problems/house-robber.ts"
+    "test": "ts-node leet-code-problems/house-robber-3.ts"
   },
   "repository": {
     "type": "git",
