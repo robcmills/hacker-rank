@@ -4,7 +4,7 @@
   "description": "TypeScript Hacker Rank challenges",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node leet-code-problems/maximum-subarray.ts"
+    "test": "ts-node src/google-interview-1.ts"
   },
   "repository": {
     "type": "git",

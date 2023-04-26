@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-// import { Dequeue } from '../src/Dequeue';
+import { Dequeue } from '../src/Dequeue';
 
 /*
 818. Race Car
@@ -107,8 +107,8 @@ The above floor/ceil approach would produce the following instruction sets:
 
 But the target can be reached in 7 instructions:
  
-  optimal: RAARAAA
-            -2   5
+  optimal: AA RA RAA
+            3  2   5
 
                                  █     ▄
                            █  ▄  █  ▄  █
@@ -137,8 +137,10 @@ pos  speed instructions
   └─┘───┘───────┘  
         floor   ceil
 
+  optimal: AA RA RAA (zig zag)
+            3  2   5
 
-mirror:
+mirror (backwards):
 
                 target
                   ↓
@@ -146,6 +148,35 @@ mirror:
    ↑        ↑     │
    └────────└───└─┘  
    floor    ceil
+
+ 
+mid:
+
+                  target
+                    ↓
+  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+  │             ↑                    ↑
+  └─┘───┘───────┘────────────────────┘
+                floor             ceil
+
+racecar(2) = AARA
+
+Optimal Solutions:
+
+{ target: 0, instructions: '' }
+{ target: 1, instructions: 'A' }
+{ target: 3, instructions: 'AA' }
+{ target: 7, instructions: 'AAA' }
+{ target: 15, instructions: 'AAAA' }
+{ target: 8, instructions: 'AAARRA' }
+{ target: 9, instructions: 'AAARARAA' }
+{ target: 10, instructions: 'AAARRAA' }
+{ target: 11, instructions: 'AAAARAARRA' }
+{ target: 12, instructions: 'AAAARAA' }
+{ target: 13, instructions: 'AAAARAARA' }
+{ target: 14, instructions: 'AAAARA' }
+{ target: 5, instructions: 'AARARAA' }
+{ target: 9, instructions: 'AAARARAA' }
 
 */
 
@@ -186,7 +217,7 @@ mirror:
 // }
 // console.log(results);
 
-// Doesn't work
+// Floor/ceiling approach
 function racecar(target: number): number {
   const i = Math.log2(target + 1);
 
@@ -221,20 +252,19 @@ function racecar(target: number): number {
 // Example 1:
 {
   // Base case where we can accelerate directly to target
-  // expect(racecar(0)).to.equal(0);
-  // expect(racecar(1)).to.equal(1);
-  // expect(racecar(3)).to.equal(2);
-  // expect(racecar(7)).to.equal(3);
-  // expect(racecar(15)).to.equal(4);
+  expect(racecar(0)).to.equal(0);
+  expect(racecar(1)).to.equal(1);
+  expect(racecar(3)).to.equal(2);
+  expect(racecar(7)).to.equal(3);
+  expect(racecar(15)).to.equal(4);
   // All targets between base cases 7 and 15
-  // expect(racecar(8)).to.equal(6); // AAA7RRA8 // 1,3,7,15
-  // expect(racecar(9)).to.equal(8); // AAA7RRARRA9 // edge case
-  // expect(racecar(10)).to.equal(7); // AAA7RRAA10
-  // expect(racecar(11)).to.equal(10);
-  // expect(racecar(12)).to.equal(7); // AAAA15,R,AA-3
-  // expect(racecar(13)).to.equal(9); // AAA7,RR,AAA7,RA
-  // expect(racecar(14)).to.equal(6);
-  // expect(racecar(15)).to.equal(4);
+  expect(racecar(8)).to.equal(6); // AAA7RRA8 // 1,3,7,15
+  expect(racecar(9)).to.equal(8); // AAA7RRARRA9 // edge case
+  expect(racecar(10)).to.equal(7); // AAA7RRAA10
+  expect(racecar(11)).to.equal(10);
+  expect(racecar(12)).to.equal(7); // AAAA15,R,AA-3
+  expect(racecar(13)).to.equal(9); // AAA7,RR,AAA7,RA
+  expect(racecar(14)).to.equal(6);
 }
 
 // // Example 2:
@@ -265,7 +295,7 @@ function racecar(target: number): number {
   // floor AA3 RRA4 RRA5 (8 instructions)
   //       AA3 RRAA6 RA5 (8)
   // ceil AAA7 RAA4 RA5 (8)
-  // RAA-2 RAAA5 (7) (starts by going away from target)
+  //  (7)
   expect(racecar(9)).to.equal(8);
   // floor AAA7 RRA8 RRA9 (9 instructions)
   // ceil AAAA15 RAAA8 RA9 (10)
